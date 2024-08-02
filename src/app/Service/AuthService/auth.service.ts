@@ -24,13 +24,13 @@ export class AuthService {
     return this.http.post<User>(this.apiUrl + '/login', { email, password });
   }
 
-  register(email: string, password: string, age: number, name: string) {
-    return this.http.post<User>(this.apiUrl + '/register', {
-      email,
-      password,
-      age,
-      name,
-    });
+  register(registerData: {
+    email: string;
+    password: string;
+    age: number;
+    name: string;
+  }) {
+    return this.http.post<User>(this.apiUrl + '/register', registerData);
   }
 
   setData(token: string, name: string): void {

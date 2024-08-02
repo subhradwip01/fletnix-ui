@@ -2,6 +2,7 @@
   <div
     class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 h-screen"
   >
+  <div class="w-[50%] flex flex-col justify-center items-center gap-3">
     <a
       href="/"
       class="flex items-center mb-6 text-2xl font-semibold text-white space-x-3"
@@ -9,8 +10,11 @@
       <img src="assets/branding/fletnix-logo.png" width="50px" height="50px" />
       <span> FletNix</span>
     </a>
+    <div class="border border-red-500 bg-red-200 rounded-lg w-full px-3 py-2" *ngIf="errorMessage">
+        <p class="text-red-500 fornt-semibold text-wrap">{{errorMessage || 'Unable to process the request to open account. Please try again later'}}</p>
+    </div>
     <div
-      class="w-full bg-gray-800 rounded-lg shadoo md:mt-0 sm:max-w-md xl:p-0"
+      class="w-full bg-gray-800 rounded-lg shadoo md:mt-0"
     >
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1
@@ -35,6 +39,7 @@
               class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
               placeholder="Subhradwip"
               required
+              formControlName="name"
             />
             <div
               *ngIf="name.invalid && (name.dirty || name.touched)"
@@ -54,6 +59,7 @@
               class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
               placeholder="subhradwip@example.com"
               required
+              formControlName="email"
             />
           </div>
           <div>
@@ -69,6 +75,7 @@
               placeholder="••••••••"
               class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
               required
+              formControlName="password"
             />
           </div>
           <div>
@@ -84,6 +91,7 @@
               placeholder="18"
               class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
               required
+              formControlName="age"
             />
           </div>
           <button
@@ -117,5 +125,6 @@
         </form>
       </div>
     </div>
+</div>
   </div>
 </section>

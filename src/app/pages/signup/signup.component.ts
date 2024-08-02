@@ -35,16 +35,17 @@ export class SignupComponent {
   register(): void {
     this.isLoading = true;
     const { name, age, email, password } = this.registerForm.value;
-    this.authService.register(name, age, email, password).subscribe({
+    this.authService.register({name, age, email, password}).subscribe({
       next: (res: any) => {
         console.log('Registration successful:', res);
         this.isLoading = false;
+        alert("You have successfully created account");
         this.router.navigate(['/login']);
       },
       error: (err: any) => {
         console.log('Registration error:', err);
         this.isLoading = false;
-        this.errorMessage = 'Registration failed. Please try again.';
+        this.errorMessage = err.error?.message;
       }
     });
   }
