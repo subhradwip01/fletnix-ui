@@ -1,1 +1,115 @@
-<p>home works!</p>
+<div class="flex flex-col h-[100svh]">
+  <app-header></app-header>
+  <main
+    class="flex-1 bg-gray-600 px-10 py-8 flex flex-col overflow-x-auto gap-3"
+  >
+    <div class="flex justify-between w-full item-center">
+      <div>
+        <ng-container *ngIf="searchTerm; else defaultHeading">
+          <p class="text-3xl font-semibold text-white">
+            Searched for '{{ searchTerm }}'
+          </p>
+        </ng-container>
+        <ng-template #defaultHeading>
+          <p class="text-3xl font-semibold text-white">
+            Explore any {{ selectedType === 'All' ? 'movie or show' : selectedType === 'Movie' ? 'movie' : 'tv show' }}
+          </p>
+        </ng-template>
+      </div>
+      <div class="flex gap-3">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
+          placeholder="Search by title or cast"
+          [disabled]="isLoading"
+          (input)="onSearch($event)"
+        />
+        <select
+          id="type"
+          class="bg-gray-700 border border-gray-300 text-white text-sm rounded-lg px-5"
+          [disabled]="isLoading"
+          (change)="onTypeChange($event)"
+        >
+          <option value="All" selected>All</option>
+          <option value="Movie" class="py-2">Movie</option>
+          <option value="TV Show" class="py-2">TV show</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex-1 spac-y-2">
+      <div
+        *ngIf="isLoading; else dataOrNoData"
+        class="flex justify-center items-center"
+      >
+        <p class="font-semibold text-white">Loading...</p>
+      </div>
+
+      <ng-template #dataOrNoData>
+        <div
+          *ngIf="filteredShows.length === 0; else showList"
+          class="text-center my-4 h-full flex justify-center items-center"
+        >
+          <p class="text-2xl text-white" *ngIf="errorMessage">
+            {{ errorMessage || "No shows are found." }}
+          </p>
+        </div>
+
+        <ng-template #showList>
+          <div class="space-y-2">
+            <div
+              *ngFor="let show of filteredShows"
+              class="p-4 border rounded-lg shadow space-y-1 cursor-pointer bg-gray-700"
+              (click)="goToDetails(show.show_id)"
+            >
+              <p class="text-[18px] font-semibold text-white">
+                {{ show.title }}
+              </p>
+              <div class="flex gap-2">
+                <p
+                  class="border border-gray-800 px-13 rounded-lg text-white px-2 bg-gray-500"
+                  *ngIf="show.type"
+                >
+                  {{ show.type }}
+                </p>
+                <p
+                  class="border border-gray-800 px-13 rounded-lg text-white px-2 bg-gray-500"
+                  *ngIf="show.rating"
+                >
+                  {{ show.rating }}
+                </p>
+              </div>
+              <p
+                class="space-x-2 border border-gray-800 px-2 rounded-lg text-white bg-gray-500"
+                *ngIf="show.cast"
+              >
+                {{ show.cast }}
+              </p>
+            </div>
+            <div
+              class="flex justify-center items-center gap-2"
+              *ngIf="!searchTerm"
+            >
+              <button
+                *ngIf="currentPage > 1"
+                (click)="goToPreviousPage()"
+                class="text-white border border-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit"
+              >
+                Prev
+              </button>
+              <button
+                (click)="goToNextPage()"
+                *ngIf="hasNextPage"
+                class="text-white bg-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

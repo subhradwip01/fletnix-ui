@@ -1,0 +1,18 @@
+<nav class="flex justify-between items-center w-full px-5 bg-gray-800 py-3">
+  <a
+    href="/"
+    class="flex items-center text-2xl font-semibold text-white space-x-3"
+  >
+    <img src="assets/branding/fletnix-logo.png" width="40px" height="40px" />
+    <span> FletNix</span>
+  </a>
+  <div class="flex items-center gap-5">
+    <p class="font-semibold text-white text-nowrap">{{ username }}</p>
+    <button
+      (click)="logout()"
+      class="w-full text-white bg-red-500 hover:bg-primary-700 rounded-lg h-[40px] px-5"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
