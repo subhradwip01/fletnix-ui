@@ -47,7 +47,7 @@ export class ShowDetailsComponent {
       },
       error: (error) => {
         console.error('Error fetching show details:', error);
-        this.errorMessage = error.error?.message;
+        this.errorMessage = error.error?.message || 'Unable to get the information for the show please. Please reload or try again later';
         this.isLoading = false;
       },
     });

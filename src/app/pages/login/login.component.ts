@@ -49,7 +49,7 @@ export class LoginComponent {
       },
       error: (err: any) => {
         console.log(err);
-        this.errorMessage=err.error?.message
+        this.errorMessage=err.error?.message || 'Unable to login now. Please try again later.'
         this.isLoading = false;
       },
     });

@@ -47,9 +47,8 @@ export class SignupComponent {
         this.router.navigate(['/login']);
       },
       error: (err: any) => {
-        console.log('Registration error:', err);
         this.isLoading = false;
-        this.errorMessage = err.error?.message;
+        this.errorMessage = err.error?.message || 'Unable to register you now. Please try again later.';
       }
     });
   }
