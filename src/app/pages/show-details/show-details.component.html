@@ -5,14 +5,15 @@
       <p class="text-white font-semibold">Loading...</p>
     </div>
 
-    <ng-template #showDetails>
-      <div class="w-[50%]">
+    <ng-template #showDetails >
+      <div class="w-[90%] sm:w-[50%] md:w-[30%]">
+      <div class="w-full">
         <button (click)="goBack()"
           class="text-white border border-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit">
           Go back
         </button>
       </div>
-      <div *ngIf="show; else errorTemplate" class="my-4 p-4 border rounded bg-gray-800 w-[90%] sm:w-[50%] md:w-[30%] text-white">
+      <div *ngIf="show; else errorTemplate" class="my-4 p-4 border rounded bg-gray-800 w-full text-white">
         <h2 class="text-3xl font-bold text-center">{{ show.title }}</h2>
         <p><strong class="mr-2">Type:</strong> {{ show.type || '-' }}</p>
         <p><strong class="mr-2">Director:</strong> {{ show.director || '-'}}</p>
@@ -28,7 +29,7 @@
 
       <ng-template #errorTemplate>
         <div
-          class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white text-center flex justify-center items-center">
+          class="my-4 p-4 border rounded bg-gray-800 w-full text-white text-center flex justify-center items-center">
           <p>{{ errorMessage || 'Unable to get the show, please try again later'}}</p>
         </div>
         <button (click)="reload()"
@@ -36,6 +37,7 @@
           Reload
         </button>
       </ng-template>
+    </div>
     </ng-template>
   </main>
   <app-footer></app-footer>
