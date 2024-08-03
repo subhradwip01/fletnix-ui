@@ -2,7 +2,7 @@
   <app-header></app-header>
   <main class="flex flex-1 flex-col w-full justify-center items-center bg-gray-900">
     <div *ngIf="isLoading; else showDetails">
-      <p>Loading...</p>
+      <p class="text-white font-semibold">Loading...</p>
     </div>
 
     <ng-template #showDetails>
