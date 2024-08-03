@@ -1,27 +1,48 @@
-# FletnixUi
+# FletNix
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c608867b-2861-46dd-b6b5-771e0dacf187" alt="Description of Image" width="500">
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+### FletNix - A ultimate show platform where you can explore any movies and TV shows on a regular basis. With textual representation of data, it helps users to explore shows pretty quickly.
 
-## Development server
+### Objective
+1. A free platform to show any movie/TV show information from Netflix
+2. Minimalistic UI to avoid unnecessary UX complexity.
+3.  Will have required features only like - login/register/see all shows/filtration/get details.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Features achieved:
+- Users can register with - name, email, password, age
+- Users can log in with their credentials - email, password
+- Users can see a list of shows on the home page with minimum information - title, casts, rating, type
+- Users can check the details by clicking on any list item on the home page, which will take you to the details page.
 
-## Code scaffolding
+### Pages:
+1. Login page:
+   ![image](https://github.com/user-attachments/assets/07db58df-6c4d-409d-baaa-1c71b0ad6dcd)
+2. Signup page:
+   ![image](https://github.com/user-attachments/assets/649b4c7f-6cd1-4af3-8b10-f5a012e7bd99)
+3. Home page:
+   ![image](https://github.com/user-attachments/assets/ea5e3e2c-d8bc-4319-9a04-69d4b63999f5)
+4. Show details page:
+   ![image](https://github.com/user-attachments/assets/734a2b3d-64cc-452b-9f38-8e3cb970ac03)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Tech stack:
+- Angular - 17
+- Tailwind CSS
 
-## Build
+### Improvements:
+1. We can improve the UI by creating a proper structure/design of the UI.
+2. Enahcne the security - for example form value filtering, more validations add to the form, etc.
+3. We can create common components to use in multiple places - for example UI components  (buttons, cards, list items, etc.)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+    
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
