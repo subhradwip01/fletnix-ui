@@ -12,7 +12,7 @@
           Go back
         </button>
       </div>
-      <div *ngIf="show; else errorTemplate" class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white">
+      <div *ngIf="show; else errorTemplate" class="my-4 p-4 border rounded bg-gray-800 w-[90%] sm:w-[50%] md:w-[30%] text-white">
         <h2 class="text-3xl font-bold text-center">{{ show.title }}</h2>
         <p><strong class="mr-2">Type:</strong> {{ show.type || '-' }}</p>
         <p><strong class="mr-2">Director:</strong> {{ show.director || '-'}}</p>
