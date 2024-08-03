@@ -23,17 +23,27 @@ export class LoginComponent {
   password: FormControl<string | null> = new FormControl<string>('');
   isLoading = false;
   errorMessage: string | null = null;
+  isPasswordShow = false;
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    }
+  }
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private titleService: Title
   ) {
-    this.titleService.setTitle('Login - Login to Fletnix')
+
+    this.titleService.setTitle('Login - Login to Fletnix');
     this.loginForm = this.formBuilder.group({
       email: this.email,
       password: this.password,
     });
+  }
+  togglePasswordShow () {
+    this.isPasswordShow = !this.isPasswordShow
   }
   login(): void {
     this.isLoading = true;
@@ -49,7 +59,8 @@ export class LoginComponent {
       },
       error: (err: any) => {
         console.log(err);
-        this.errorMessage=err.error?.message || 'Unable to login now. Please try again later.'
+        this.errorMessage =
+          err.error?.message || 'Unable to login now. Please try again later.';
         this.isLoading = false;
       },
     });

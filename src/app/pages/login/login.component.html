@@ -62,15 +62,18 @@
                 class="block mb-2 text-sm font-medium text-white"
                 >Password</label
               >
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
-                required
-                formControlName="password"
-              />
+              <div class="w-full relative">
+                <input
+                  [type]="isPasswordShow ? 'text' : 'password'"
+                  name="password"
+                  id="password"
+                  placeholder="••••••••"
+                  class="bg-gray-700 border border-gray-300 text-white rounded-lg block w-full p-2.5"
+                  required
+                  formControlName="password"
+                />
+                <p class="cursor-pointer absolute right-3 top-3 text-white font-semibold" (click)="togglePasswordShow()">{{isPasswordShow ? "Hide" : "Show"}}</p>
+              </div>
             </div>
             <button
               type="submit"

@@ -19,7 +19,13 @@ export class SignupComponent {
   password: FormControl<string | null> = new FormControl<string>('');
   isLoading = false;
   errorMessage: string | null = null;
+  isPasswordShow = false;
 
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    }
+  }
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -34,6 +40,10 @@ export class SignupComponent {
       password: this.password,
       
     });
+  }
+
+  togglePasswordShow () {
+    this.isPasswordShow = !this.isPasswordShow
   }
 
   register(): void {
