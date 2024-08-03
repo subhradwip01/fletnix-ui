@@ -36,7 +36,8 @@
 3. We can create common components to use in multiple places - for example UI components  (buttons, cards, list items, etc.)
 
 
-    
+### Backend repo:
+https://github.com/subhradwip01/fletnix-backend
 
 
 
