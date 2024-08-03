@@ -1,3 +1,3 @@
 export const API_CONFIG = {
-    baseUrl: 'http://localhost:4000/api'
+    baseUrl: 'https://fletnix-backend-1.onrender.com/api'
 }
