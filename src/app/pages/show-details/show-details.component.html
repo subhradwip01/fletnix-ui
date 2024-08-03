@@ -1,31 +1,24 @@
 <div class="flex flex-col h-[100svh]">
   <app-header></app-header>
-  <main
-    class="flex flex-1 flex-col w-full justify-center items-center bg-gray-900"
-  >
+  <main class="flex flex-1 flex-col w-full justify-center items-center bg-gray-900">
     <div *ngIf="isLoading; else showDetails">
       <p>Loading...</p>
     </div>
 
     <ng-template #showDetails>
-        <div class="w-[50%]">
-      <button
-        (click)="goBack()"
-        class="text-white border border-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit"
-      >
-        Go back
-      </button>
-    </div>
-      <div
-        *ngIf="show; else errorTemplate"
-        class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white"
-      >
+      <div class="w-[50%]">
+        <button (click)="goBack()"
+          class="text-white border border-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit">
+          Go back
+        </button>
+      </div>
+      <div *ngIf="show; else errorTemplate" class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white">
         <h2 class="text-3xl font-bold text-center">{{ show.title }}</h2>
         <p><strong class="mr-2">Type:</strong> {{ show.type || '-' }}</p>
         <p><strong class="mr-2">Director:</strong> {{ show.director || '-'}}</p>
         <p><strong class="mr-2">Director:</strong> {{ show.cast || '-'}}</p>
         <p><strong class="mr-2">Country:</strong> {{ show.country || '-' }}</p>
-        <p><strong class="mr-2">Date Added:</strong> {{ show.date_added }}</p>
+        <p><strong class="mr-2">Date Added:</strong> {{ show.date_added ? formattedDate(show.date_added) : '-' }}</p>
         <p><strong class="mr-2">Release Year:</strong> {{ show.release_year || '-' }}</p>
         <p><strong class="mr-2">Rating:</strong> {{ show.rating || '-' }}</p>
         <p><strong class="mr-2">Duration:</strong> {{ show.duration || '-' }}</p>
@@ -35,10 +28,13 @@
 
       <ng-template #errorTemplate>
         <div
-          class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white text-center"
-        >
-          <p>Unable to get the show, please try again later.</p>
+          class="my-4 p-4 border rounded bg-gray-800 w-[50%] text-white text-center flex justify-center items-center">
+          <p>{{ errorMessage || 'Unable to get the show, please try again later'}}</p>
         </div>
+        <button (click)="reload()"
+          class="text-white border border-indigo-500 hover:bg-primary-700 rounded-lg h-[40px] px-5 w-fit">
+          Reload
+        </button>
       </ng-template>
     </ng-template>
   </main>

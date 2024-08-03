@@ -3,7 +3,8 @@ import { HeaderComponent } from '../../component/layouts/header/header.component
 import { FooterComponent } from '../../component/layouts/footer/footer.component';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from '../../Service/MovieService/movie.service';
+import { ShowService } from '../../Service/ShowService/show.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,9 +24,12 @@ export class HomeComponent {
 
   constructor(
     private router: Router,
-    private movieService: MovieService,
-    private route: ActivatedRoute
-  ) {}
+    private showService: ShowService,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('FletNix - A ultimate show lover platform')
+  }
 
   ngOnInit(): void {
     this.selectedType = 'Movie';
@@ -38,15 +42,16 @@ export class HomeComponent {
 
   fetchShows(): void {
     this.isLoading = true;
-    this.movieService
-      .getMovies(
+    this.showService
+      .getShows(
         this.selectedType !== 'All' ? this.selectedType : null,
         this.currentPage
       )
       .subscribe({
         next: (res) => {
-          this.shows = res.data.movies;
-          this.filteredShows = res.data.movies;
+          console.log(res);
+          this.shows = res.data.shows;
+          this.filteredShows = res.data.shows;
           this.hasNextPage = res.data.hasNextPage;
           this.isLoading = false;
         },

@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../Service/AuthService/auth.service';
 import { NgClass, NgIf } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -25,8 +26,10 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Login - Login to Fletnix')
     this.loginForm = this.formBuilder.group({
       email: this.email,
       password: this.password,

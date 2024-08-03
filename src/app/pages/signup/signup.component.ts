@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { AuthService } from '../../Service/AuthService/auth.service';
 import { NgClass, NgIf } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -12,23 +13,26 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class SignupComponent {
   registerForm: FormGroup;
-  name: FormControl<string | null> = new FormControl<string>('', [Validators.required]);
-  age: FormControl<number | null> = new FormControl<number | null>(null, [Validators.required, Validators.min(10)]);
-  email: FormControl<string | null> = new FormControl<string>('', [Validators.required, Validators.email]);
-  password: FormControl<string | null> = new FormControl<string>('', [Validators.required, Validators.minLength(6)]);
+  name: FormControl<string | null> = new FormControl<string>('');
+  age: FormControl<number | null> = new FormControl<number | null>(null);
+  email: FormControl<string | null> = new FormControl<string>('');
+  password: FormControl<string | null> = new FormControl<string>('');
   isLoading = false;
   errorMessage: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Signup - Signup to Fletnix to access different shows');
     this.registerForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
       email: this.email,
       password: this.password,
+      
     });
   }
 

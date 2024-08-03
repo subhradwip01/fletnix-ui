@@ -8,12 +8,12 @@ import { AuthService } from '../AuthService/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService {
-  private apiUrl = `${API_CONFIG.baseUrl}/movies`;
+export class ShowService {
+  private apiUrl = `${API_CONFIG.baseUrl}/shows`;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getMovies(type: string | null, page: number): Observable<any> {
+  getShows(type: string | null, page: number): Observable<any> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export class MovieService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>(`${this.apiUrl}/show-details/${id}`, {
+    return this.http.get<any>(`${this.apiUrl}/get-details/${id}`, {
       headers,
     });
   }
