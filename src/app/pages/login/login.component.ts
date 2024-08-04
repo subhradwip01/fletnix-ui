@@ -51,7 +51,7 @@ export class LoginComponent {
     const password = this.loginForm.get('password')?.value;
     console.log(this.loginForm.valid, email.valid);
     this.authService.login(email, password).subscribe({
-      next: (res: any) => {
+      next: (res: LoginRes) => {
         console.log('success', res);
         this.isLoading = false;
         this.authService.setData(res.data.token, res.data.name);

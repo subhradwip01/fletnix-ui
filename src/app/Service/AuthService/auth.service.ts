@@ -20,8 +20,8 @@ export class AuthService {
     this.nameSubject.next(name);
   }
 
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(this.apiUrl + '/login', { email, password });
+  login(email: string, password: string): Observable<LoginRes> {
+    return this.http.post<LoginRes>(this.apiUrl + '/login', { email, password });
   }
 
   register(registerData: {
@@ -29,8 +29,8 @@ export class AuthService {
     password: string;
     age: number;
     name: string;
-  }) {
-    return this.http.post<User>(this.apiUrl + '/register', registerData);
+  }) : Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/register', registerData);
   }
 
   setData(token: string, name: string): void {
